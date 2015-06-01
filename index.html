@@ -4,8 +4,8 @@
 	<meta charset="utf-8">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" sizes="196x196" href="bunny.png">
-	<title>Bunny Defender</title>
+    <link rel="icon" sizes="196x196" href="ranran.png">
+	<title>Ranran Defender</title>
     <script src="libs/phaser.js"></script>
     <script src="Boot.js"></script>
     <script src="Preloader.js"></script>
@@ -24,10 +24,10 @@
     <script type="text/javascript">
         window.onload = function() {
             var game = new Phaser.Game(540, 960, Phaser.AUTO, 'gameContainer');
-            game.state.add('Boot', BunnyDefender.Boot);
-            game.state.add('Preloader', BunnyDefender.Preloader);
-            game.state.add('StartMenu', BunnyDefender.StartMenu);
-            game.state.add('Game', BunnyDefender.Game);
+            game.state.add('Boot', RanranDefender.Boot);
+            game.state.add('Preloader', RanranDefender.Preloader);
+            game.state.add('StartMenu', RanranDefender.StartMenu);
+            game.state.add('Game', RanranDefender.Game);
             game.state.start('Boot');
         }
     </script>

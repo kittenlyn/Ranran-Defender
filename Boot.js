@@ -1,8 +1,8 @@
-var BunnyDefender = {};
+var RanranDefender = {};
 
-BunnyDefender.Boot = function(game) {};
+RanranDefender.Boot = function(game) {};
 
-BunnyDefender.Boot.prototype = {
+RanranDefender.Boot.prototype = {
     preload: function() {
         this.load.image('preloaderBar', 'images/loader_bar.png');
         this.load.image('titleimage', 'images/TitleImage.png');

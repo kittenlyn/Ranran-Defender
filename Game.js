@@ -1,6 +1,6 @@
-BunnyDefender.Game = function(game) {
+RanranDefender.Game = function(game) {
     this.totalBunnies;
-    this.bunnyGroup;
+    this.ranranGroup;
     this.totalSpacerocks;
     this.spacerockgroup;
     this.burst;
@@ -15,7 +15,7 @@ BunnyDefender.Game = function(game) {
     this.ding;
 };
 
-BunnyDefender.Game.prototype = {
+RanranDefender.Game.prototype = {
     
     create: function() {
         this.gameover = false;
@@ -49,20 +49,20 @@ BunnyDefender.Game.prototype = {
     },
     
     buildBunnies: function() {
-        this.bunnygroup = this.add.group();
-        this.bunnygroup.enableBody = true;
+        this.ranrangroup = this.add.group();
+        this.ranrangroup.enableBody = true;
         for(var i=0; i<this.totalBunnies; i++) {
-            var b = this.bunnygroup.create(this.rnd.integerInRange(-10, this.world.width-50), this.rnd.integerInRange(this.world.height-180, this.world.height-60), 'bunny', 'Bunny0000');
+            var b = this.ranrangroup.create(this.rnd.integerInRange(-10, this.world.width-50), this.rnd.integerInRange(this.world.height-180, this.world.height-60), 'ranran', 'Ranran0000');
             b.anchor.setTo(0.5, 0.5);
             b.body.moves = false;
             b.animations.add('Rest', this.game.math.numberArray(1,58));
             b.animations.add('Walk', this.game.math.numberArray(68,107));
             b.animations.play('Rest', 24, true);
-            this.assignBunnyMovement(b);
+            this.assignRanranMovement(b);
         }
     },
     
-    assignBunnyMovement: function(b) {
+    assignRanranMovement: function(b) {
         bposition = Math.floor(this.rnd.realInRange(50, this.world.width-50));
         bdelay = this.rnd.integerInRange(2000, 6000);
         if(bposition < b.x){
@@ -71,19 +71,19 @@ BunnyDefender.Game.prototype = {
             b.scale.x = -1;
         }
         t = this.add.tween(b).to({x:bposition}, 3500, Phaser.Easing.Quadratic.InOut, true, bdelay);
-        t.onStart.add(this.startBunny, this);
-        t.onComplete.add(this.stopBunny, this);
+        t.onStart.add(this.startRanran, this);
+        t.onComplete.add(this.stopRanran, this);
     },
     
-    startBunny: function(b) {
+    startRanran: function(b) {
         b.animations.stop('Play');
         b.animations.play('Walk', 24, true);
     },
     
-    stopBunny: function(b) {
+    stopRanran: function(b) {
         b.animations.stop('Walk');
         b.animations.play('Rest', 24, true);
-        this.assignBunnyMovement(b);
+        this.assignRanranMovement(b);
     },
     
     buildSpaceRocks: function() {
@@ -141,7 +141,7 @@ BunnyDefender.Game.prototype = {
         this.respawnRock(r);  
     },
     
-    bunnyCollision: function(r, b) {
+    ranranCollision: function(r, b) {
         if(b.exists){
             this.ouch.play();
             this.respawnRock(r);
@@ -182,21 +182,21 @@ BunnyDefender.Game.prototype = {
     },
     
     makeGhost: function(b) {
-        bunnyghost = this.add.sprite(b.x-20, b.y-180, 'ghost');
-        bunnyghost.anchor.setTo(0.5, 0.5);
-        bunnyghost.scale.x = b.scale.x;
-        this.physics.enable(bunnyghost, Phaser.Physics.ARCADE);
-        bunnyghost.enableBody = true;
-        bunnyghost.checkWorldBounds = true;
-        bunnyghost.body.velocity.y = -800;
+        ranranghost = this.add.sprite(b.x-20, b.y-180, 'ghost');
+        ranranghost.anchor.setTo(0.5, 0.5);
+        ranranghost.scale.x = b.scale.x;
+        this.physics.enable(ranranghost, Phaser.Physics.ARCADE);
+        ranranghost.enableBody = true;
+        ranranghost.checkWorldBounds = true;
+        ranranghost.body.velocity.y = -800;
     },
     
     
     
     update: function() {
         this.physics.arcade.overlap(this.spacerockgroup, this.burst, this.burstCollision, null, this);
-        this.physics.arcade.overlap(this.spacerockgroup, this.bunnygroup, this.bunnyCollision, null, this);
-        this.physics.arcade.overlap(this.bunnygroup, this.burst, this.friendlyFire, null, this);
+        this.physics.arcade.overlap(this.spacerockgroup, this.ranrangroup, this.ranranCollision, null, this);
+        this.physics.arcade.overlap(this.ranrangroup, this.burst, this.friendlyFire, null, this);
     }
     
     

@@ -1,10 +1,10 @@
-BunnyDefender.StartMenu = function(game) {
+RanranDefender.StartMenu = function(game) {
     this.startBG;
     this.startPrompt;
     this.ding;
 }
 
-BunnyDefender.StartMenu.prototype = {
+RanranDefender.StartMenu.prototype = {
 	
 	create: function () {
         this.ding = this.add.audio('select_audio');

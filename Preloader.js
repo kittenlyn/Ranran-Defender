@@ -1,10 +1,10 @@
-BunnyDefender.Preloader = function(game) {
+ranranDefender.Preloader = function(game) {
     this.preloadBar = null;
     this.titleText = null;
     this.ready = false;
 };
 
-BunnyDefender.Preloader.prototype = {
+ranranDefender.Preloader.prototype = {
 	
 	preload: function () {
 		this.preloadBar = this.add.sprite(this.world.centerX, this.world.centerY, 'preloaderBar');
@@ -16,7 +16,7 @@ BunnyDefender.Preloader.prototype = {
         this.load.bitmapFont('eightbitwonder', 'fonts/eightbitwonder.png', 'fonts/eightbitwonder.fnt');
         this.load.image('hill', 'images/hill.png');
         this.load.image('sky', 'images/sky.png');
-        this.load.atlasXML('bunny', 'images/spritesheets/bunny.png', 'images/spritesheets/bunny.xml');
+        this.load.atlasXML('ranran', 'images/spritesheets/ranran.png', 'images/spritesheets/ranran.xml');
         this.load.atlasXML('spacerock', 'images/spritesheets/SpaceRock.png', 'images/spritesheets/SpaceRock.xml');
         this.load.image('explosion', 'images/explosion.png');
         this.load.image('ghost', 'images/ghost.png');
